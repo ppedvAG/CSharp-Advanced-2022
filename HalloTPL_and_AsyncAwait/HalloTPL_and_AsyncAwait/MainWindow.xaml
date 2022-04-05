@@ -9,8 +9,12 @@
 
     <StackPanel Margin="8">
         <Button Click="StartWithoutThread" >Without Threading</Button>
-        <Button Click="StartTask" Name="b1">Start Task</Button>
+        <Button Click="StartTask" Name="b1">Start Task (Dispatcher)</Button>
+        <Button Click="StartTaskWithTs" Name="b2">Start Task (TaskScheduler)</Button>
+        <Button Click="StartAsyncAwait" Name="b3">Start Async/Await</Button>
+        <Button Click="StartOldFunction" Name="b4">Start old Function (AA)</Button>
         <ProgressBar Name="pb1" Height="22"/>
+        <Button Click="Abort">Abort</Button>
     </StackPanel>
 
 </Window>
