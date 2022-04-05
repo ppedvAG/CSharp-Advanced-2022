@@ -1,0 +1,16 @@
+﻿<Window x:Class="HalloTPL_and_AsyncAwait.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HalloTPL_and_AsyncAwait"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="300">
+
+    <StackPanel Margin="8">
+        <Button Click="StartWithoutThread" >Without Threading</Button>
+        <Button Click="StartTask" Name="b1">Start Task</Button>
+        <ProgressBar Name="pb1" Height="22"/>
+    </StackPanel>
+
+</Window>
