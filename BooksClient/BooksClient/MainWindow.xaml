@@ -22,6 +22,10 @@
             <Button Click="GenCode"  >GenCode</Button>
             <Button Click="SaveToXML">Save as XML...</Button>
             <Button Click="OpenXML">Open XML...</Button>
+            <Button Click="ShowSum">Sum PageCount</Button>
+            <Button Click="ShowAno">Anonymous Datatypes</Button>
+            <Button Click="ShowSelected">Show Selected</Button>
+            <Button Click="AllTitle">All Titles in one line</Button>
         </WrapPanel>
         <TabControl>
             <TabItem Header="JSON">

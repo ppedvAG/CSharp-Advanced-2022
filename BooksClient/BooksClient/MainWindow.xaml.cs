@@ -1,22 +1,11 @@
 ﻿using Microsoft.Win32;
 using NJsonSchema;
 using NJsonSchema.CodeGeneration.CSharp;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml.Serialization;
 
 namespace BooksClient
@@ -39,7 +28,9 @@ namespace BooksClient
             jsonTb.Text = json;
 
             BooksResults result = System.Text.Json.JsonSerializer.Deserialize<BooksResults>(json);
-            myGrid.ItemsSource = result.items.Select(x => x.volumeInfo).ToList();
+            myGrid.ItemsSource = result.items.Select(x => x.volumeInfo)
+                                             .OrderBy(x => x.language)
+                                             .ThenByDescending(x => x.pageCount).ToList();
 
             //dynamic dyn = System.Text.Json.JsonSerializer.Deserialize<BooksResults>(json);
 
@@ -81,6 +72,42 @@ namespace BooksClient
                 using var sr = new StreamReader(dlg.FileName);
                 myGrid.ItemsSource = (List<Volumeinfo>)xmlSerial.Deserialize(sr);
             }
+        }
+
+        private void ShowSum(object sender, RoutedEventArgs e)
+        {
+            var books = (List<Volumeinfo>)myGrid.ItemsSource;
+
+            var sum = books.Where(x => x.language == "en").Sum(x => x.pageCount);
+
+            MessageBox.Show($"Sum of PageCount {sum}");
+        }
+
+        private void ShowAno(object sender, RoutedEventArgs e)
+        {
+            var books = (List<Volumeinfo>)myGrid.ItemsSource;
+
+            var query = from b in books
+                        select new { Title = b.title, Pages = b.pageCount, Lang = b.language };
+
+            myGrid.ItemsSource = query.ToList();
+        }
+
+        private void ShowSelected(object sender, RoutedEventArgs e)
+        {
+            if (myGrid.SelectedItem is Volumeinfo vi)
+            {
+                MessageBox.Show(vi.title);
+            }
+        }
+
+        private void AllTitle(object sender, RoutedEventArgs e)
+        {
+            var books = (List<Volumeinfo>)myGrid.ItemsSource;
+
+            var niceString = string.Join(", ", books.Select(x => x.title));
+
+            MessageBox.Show(niceString);
         }
     }
 }
