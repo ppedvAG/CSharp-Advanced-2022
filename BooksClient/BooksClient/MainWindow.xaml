@@ -26,6 +26,7 @@
             <Button Click="ShowAno">Anonymous Datatypes</Button>
             <Button Click="ShowSelected">Show Selected</Button>
             <Button Click="AllTitle">All Titles in one line</Button>
+            <Button Click="Vali">Validate selected Book</Button>
         </WrapPanel>
         <TabControl>
             <TabItem Header="JSON">

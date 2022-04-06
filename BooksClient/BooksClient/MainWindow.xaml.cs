@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using NJsonSchema;
 using NJsonSchema.CodeGeneration.CSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -108,6 +109,16 @@ namespace BooksClient
             var niceString = string.Join(", ", books.Select(x => x.title));
 
             MessageBox.Show(niceString);
+        }
+
+        private void Vali(object sender, RoutedEventArgs e)
+        {
+            if (myGrid.SelectedItem is Volumeinfo vi)
+            {
+                BookRules rb = new();
+                var result = rb.Validate(vi);
+                MessageBox.Show(string.Join(Environment.NewLine, result.Errors.Select(x => x.ErrorMessage)));
+            }
         }
     }
 }
