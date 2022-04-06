@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NJsonSchema;
+using NJsonSchema.CodeGeneration.CSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -36,6 +38,26 @@ namespace BooksClient
             BooksResults result = System.Text.Json.JsonSerializer.Deserialize<BooksResults>(json);
             myGrid.ItemsSource = result.items.Select(x => x.volumeInfo);
 
+
+
+            dynamic dyn = System.Text.Json.JsonSerializer.Deserialize<BooksResults>(json);
+
+            MessageBox.Show(dyn.totalItems.ToString());
+        }
+
+        private async void GenCode(object sender, RoutedEventArgs e)
+        {
+            var url = $"https://www.googleapis.com/books/v1/volumes?q={searchTb.Text}";
+            var http = new HttpClient();
+            var json = await http.GetStringAsync(url);
+            jsonTb.Text = json;
+
+            var schema = await JsonSchema.FromJsonAsync(json);
+
+            var generator = new CSharpGenerator(schema);
+            var file = generator.GenerateFile();
+
+            
         }
     }
 }

@@ -12,10 +12,12 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label>Booktitle</Label>
-            <TextBox Name="searchTb" Grid.Column="1" />
+            <TextBox Name="searchTb" Grid.Column="1" Text="WPF"/>
             <Button Click="GetBooks" Grid.Column="2">Search</Button>
+            <Button Click="GenCode" Grid.Column="3">GenCode</Button>
         </Grid>
         <TabControl>
             <TabItem Header="JSON">
