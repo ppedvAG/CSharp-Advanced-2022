@@ -15,3 +15,9 @@ https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-t
 https://github.com/public-apis/public-apis  
 https://app.quicktype.io/  
 https://semver.org/  
+https://docs.microsoft.com/en-us/windows/communitytoolkit/developer-tools/guard  
+https://docs.microsoft.com/en-us/dotnet/standard/analyzers/portability-analyzer  
+https://docs.automapper.org/en/latest/Getting-started.html  
+https://prismlibrary.com/docs/index.html  
+https://benruehl.github.io/adonis-ui/docs/guides/ripple/  
+https://autofac.readthedocs.io/en/latest/index.html  
