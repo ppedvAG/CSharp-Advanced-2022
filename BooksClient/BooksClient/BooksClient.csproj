@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="Microsoft.Toolkit.Diagnostics" Version="7.1.2" />
     <PackageReference Include="NJsonSchema.CodeGeneration.CSharp" Version="10.6.10" />
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
   </ItemGroup>

@@ -23,6 +23,9 @@ namespace BooksClient
 
         private async void GetBooks(object sender, RoutedEventArgs e)
         {
+            Microsoft.Toolkit.Diagnostics.Guard.IsNotNull(sender,"sender");
+            Microsoft.Toolkit.Diagnostics.Guard.IsNotNullOrWhiteSpace(searchTb.Text, "Search Text");
+
             var url = $"https://www.googleapis.com/books/v1/volumes?q={searchTb.Text}";
             var http = new HttpClient();
             var json = await http.GetStringAsync(url);
